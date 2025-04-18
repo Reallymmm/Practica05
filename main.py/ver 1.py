@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter import messagebox, PhotoImage
-#123123
 class IQTestApp:
     def __init__(self, root):
         self.root = root
