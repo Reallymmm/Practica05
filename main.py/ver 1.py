@@ -5,7 +5,11 @@ class IQTestApp:
     def __init__(self, root):
         self.root = root
         self.root.title("IQ Test")
+
         self.root.geometry("400x300")
+
+        self.root.geometry("400x300") 
+
 
         self.create_main_menu()
 
