@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 from PIL import Image, ImageTk
+import os
 
 
 class IQTestApp:
@@ -49,12 +50,15 @@ class IQTestApp:
 
         self.current_question = 0
         self.score = 0
-        self.time_left = 1200
+        self.time_left = 1200  # 20 минут в секундах
+        self.timer_id = None
+        self.photo = None  # Для хранения ссылки на изображение
 
         self.create_main_menu()
 
     def create_main_menu(self):
         self.clear_window()
+        self.stop_timer()
 
         title_label = tk.Label(self.root, text="IQ тест", font=("Arial", 24, "bold"))
         title_label.pack(pady=40)
@@ -64,12 +68,12 @@ class IQTestApp:
 
         tk.Button(btn_frame, text="Начать тест", command=self.start_test,
                   font=("Arial", 16), width=15, height=2).grid(row=0, column=0, padx=20, pady=10)
-        tk.Button(btn_frame, text="Информация", command=self.show_info_menu,
+        tk.Button(btn_frame, text="Информация", command=self.show_info,
                   font=("Arial", 16), width=15, height=2).grid(row=1, column=0, padx=20, pady=10)
         tk.Button(btn_frame, text="Выход", command=self.root.quit,
                   font=("Arial", 16), width=15, height=2).grid(row=2, column=0, padx=20, pady=10)
 
-    def show_info_menu(self):
+    def show_info(self):
         self.clear_window()
 
         tk.Label(self.root, text="Информация о тесте", font=("Arial", 24, "bold")).pack(pady=30)
@@ -82,8 +86,7 @@ class IQTestApp:
         "Штерн предложил использовать в роли показателя интеллекта частное от деления умственного возраста на хронологический. "
         "IQ впервые был использован в шкале интеллекта Стенфорд - Бине в 1916 году.\n\n"
         "В нынешнее время интерес к тестам IQ многократно возрос, ввиду чего появилось множество разнообразных необоснованных шкал. "
-        "Поэтому сравнивать результаты разных тестов чрезвычайно затруднительно и само число IQ утратило информативную ценность."
-                         )
+        "Поэтому сравнивать результаты разных тестов чрезвычайно затруднительно и само число IQ утратило информативную ценность.")
         info_text.config(state=tk.DISABLED)
 
         tk.Button(self.root, text="Назад", command=self.create_main_menu,
@@ -91,6 +94,11 @@ class IQTestApp:
 
     def start_test(self):
         self.clear_window()
+        self.stop_timer()
+
+        self.current_question = 0
+        self.score = 0
+        self.time_left = 1200
 
         self.timer_label = tk.Label(self.root, text="20:00", font=("Arial", 16))
         self.timer_label.pack(pady=10)
@@ -100,12 +108,17 @@ class IQTestApp:
         self.question_frame.pack(pady=20)
 
         self.setup_answer_buttons()
-        self.setup_bottom_buttons()
+        self.setup_navigation_buttons()
         self.show_question()
 
     def clear_window(self):
         for widget in self.root.winfo_children():
             widget.destroy()
+
+    def stop_timer(self):
+        if self.timer_id is not None:
+            self.root.after_cancel(self.timer_id)
+            self.timer_id = None
 
     def setup_answer_buttons(self):
         self.option_buttons = []
@@ -120,15 +133,15 @@ class IQTestApp:
             btn.grid(row=row, column=col, padx=5, pady=5)
             self.option_buttons.append(btn)
 
-    def setup_bottom_buttons(self):
-        bottom_frame = tk.Frame(self.root)
-        bottom_frame.pack(pady=20)
+    def setup_navigation_buttons(self):
+        nav_frame = tk.Frame(self.root)
+        nav_frame.pack(pady=20)
 
-        tk.Button(bottom_frame, text="Пропустить", command=self.next_question,
+        tk.Button(nav_frame, text="Пропустить", command=self.next_question,
                   font=("Arial", 12)).grid(row=0, column=0, padx=10)
-        tk.Button(bottom_frame, text="Главное меню", command=self.create_main_menu,
+        tk.Button(nav_frame, text="Главное меню", command=self.create_main_menu,
                   font=("Arial", 12)).grid(row=0, column=1, padx=10)
-        tk.Button(bottom_frame, text="Выход", command=self.root.quit,
+        tk.Button(nav_frame, text="Выход", command=self.root.quit,
                   font=("Arial", 12)).grid(row=0, column=2, padx=10)
 
     def update_timer(self):
@@ -138,7 +151,7 @@ class IQTestApp:
 
         if self.time_left > 0:
             self.time_left -= 1
-            self.root.after(1000, self.update_timer)
+            self.timer_id = self.root.after(1000, self.update_timer)
         else:
             messagebox.showinfo("Время вышло", "Время на выполнение теста истекло!")
             self.show_results()
@@ -149,18 +162,23 @@ class IQTestApp:
 
         q = self.questions[self.current_question]
 
-        tk.Label(self.question_frame, text=f"Вопрос {self.current_question + 1}/{len(self.questions)}",
+        tk.Label(self.question_frame,
+                 text=f"Вопрос {self.current_question + 1}/{len(self.questions)}",
                  font=("Arial", 14)).pack()
 
         try:
+            if not os.path.exists(q["image"]):
+                raise FileNotFoundError
+
             img = Image.open(q["image"])
             img = img.resize((400, 300), Image.Resampling.LANCZOS)
-            photo = ImageTk.PhotoImage(img)
-            img_label = tk.Label(self.question_frame, image=photo)
-            img_label.image = photo
+            self.photo = ImageTk.PhotoImage(img)
+
+            img_label = tk.Label(self.question_frame, image=self.photo)
             img_label.pack(pady=10)
-        except FileNotFoundError:
-            tk.Label(self.question_frame, text=f"Изображение {q['image']} не найдено",
+        except Exception as e:
+            print(f"Ошибка загрузки изображения: {e}")
+            tk.Label(self.question_frame, text=f"Изображение не найдено: {q['image']}",
                      font=("Arial", 16), fg="red").pack(pady=50)
 
         for i, btn in enumerate(self.option_buttons):
@@ -184,40 +202,44 @@ class IQTestApp:
 
     def show_results(self):
         self.clear_window()
+        self.stop_timer()
 
-        max_score = len(self.questions)
-        iq = 100 + (self.score - max_score / 2) * 2
+        total_questions = len(self.questions)
+        iq_score = 100 + (self.score - total_questions / 2) * 2
 
         result_frame = tk.Frame(self.root)
         result_frame.pack(pady=40)
 
-        tk.Label(result_frame, text="Тест завершен!", font=("Arial", 20, "bold")).pack(pady=10)
-        tk.Label(result_frame, text=f"Правильных ответов: {self.score}/{max_score}",
+        tk.Label(result_frame, text="Результаты теста", font=("Arial", 20, "bold")).pack(pady=10)
+        tk.Label(result_frame,
+                 text=f"Правильных ответов: {self.score} из {total_questions}",
                  font=("Arial", 16)).pack(pady=5)
-        tk.Label(result_frame, text=f"Примерный IQ показатель: {iq:.0f}",
+        tk.Label(result_frame,
+                 text=f"Примерный IQ показатель: {iq_score:.0f}",
                  font=("Arial", 16)).pack(pady=5)
 
-        if iq >= 130:
+        if iq_score >= 130:
             interpretation = "Очень высокий уровень интеллекта"
-        elif iq >= 120:
+        elif iq_score >= 120:
             interpretation = "Высокий уровень интеллекта"
-        elif iq >= 110:
-            interpretation = "Выше среднего"
-        elif iq >= 90:
-            interpretation = "Средний уровень"
-        elif iq >= 80:
-            interpretation = "Ниже среднего"
+        elif iq_score >= 110:
+            interpretation = "Выше среднего уровня"
+        elif iq_score >= 90:
+            interpretation = "Средний уровень интеллекта"
+        elif iq_score >= 80:
+            interpretation = "Ниже среднего уровня"
         else:
-            interpretation = "Низкий уровень"
+            interpretation = "Низкий уровень интеллекта"
 
-        tk.Label(result_frame, text=interpretation, font=("Arial", 16, "italic")).pack(pady=10)
+        tk.Label(result_frame, text=interpretation,
+                 font=("Arial", 16, "italic")).pack(pady=10)
 
         btn_frame = tk.Frame(self.root)
         btn_frame.pack(pady=20)
 
-        tk.Button(btn_frame, text="Главное меню", command=self.create_main_menu,
+        tk.Button(btn_frame, text="Пройти снова", command=self.start_test,
                   font=("Arial", 14), width=15).grid(row=0, column=0, padx=10)
-        tk.Button(btn_frame, text="Выход", command=self.root.quit,
+        tk.Button(btn_frame, text="Главное меню", command=self.create_main_menu,
                   font=("Arial", 14), width=15).grid(row=0, column=1, padx=10)
 
 
