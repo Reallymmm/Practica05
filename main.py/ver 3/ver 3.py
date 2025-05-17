@@ -9,7 +9,6 @@ class IQTestApp:
         self.root = root
         self.root.title("IQ тест")
         self.root.geometry("800x600")
-
         self.questions = [
             {"image": "A1.png", "options": ["1", "2", "3", "4", "5", "6"], "correct": 3},
             {"image": "A2.png", "options": ["1", "2", "3", "4", "5", "6"], "correct": 4},
