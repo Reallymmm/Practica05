@@ -211,42 +211,56 @@ class IQTestApp:
             messagebox.showerror("Ошибка", "Пожалуйста, введите число")
 
     def start_quiz(self):
+        # Reset test state
         self.current_question = 0
         self.score = 0
         self.time_left = 1200
         self.timer_running = True
-
+        
+        # Clean up existing UI
         for widget in self.root.winfo_children():
             widget.destroy()
-
+        
+        # Create quiz UI
         self.create_quiz_ui()
+        
+        # Start timer
+        self.update_timer()
+        
+        # Show first question
         self.show_question()
 
     def update_timer(self):
-        if self.time_left > 0 and self.timer_running:
+        if not self.timer_running:
+            return
+
+        if self.time_left > 0:
             mins, secs = divmod(self.time_left, 60)
             time_str = f"{mins:02d}:{secs:02d}"
-
+            
             if hasattr(self, 'timer_label'):
                 try:
                     self.timer_label.config(text=f"Осталось времени: {time_str}")
                 except:
                     self.create_timer_label()
-            else:
-                self.create_timer_label()
-
+            
             self.time_left -= 1
             self.root.after(1000, self.update_timer)
+        else:
+            # Time is up!
+            self.timer_running = False
+            self.show_results()
+            return
 
     def create_timer_label(self):
         if not hasattr(self, 'timer_label'):
             self.timer_label = tk.Label(
-                self.root,
+                self.timer_frame,
                 text="Осталось времени: 20:00",
                 font=("Arial", 16),
                 bg="white"
             )
-            self.timer_label.pack(pady=10)
+            self.timer_label.pack()
         elif self.time_left <= 0:
             self.timer_running = False
             self.show_results()
