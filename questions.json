@@ -1,179 +1,179 @@
 {
     "questions": [
         {
-            "id": 1,
             "image": "IQtestpng/A1.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "options": ["1", "2", "3", "4", "5", "6"],
+            "correct": 3
         },
         {
-            "id": 2,
             "image": "IQtestpng/A2.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "options": ["1", "2", "3", "4", "5", "6"],
+            "correct": 4
         },
         {
-            "id": 3,
             "image": "IQtestpng/A3.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "options": ["1", "2", "3", "4", "5", "6"],
+            "correct": 0
         },
         {
-            "id": 4,
             "image": "IQtestpng/A4.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "options": ["1", "2", "3", "4", "5", "6"],
+            "correct": 1
         },
         {
-            "id": 5,
             "image": "IQtestpng/A5.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "options": ["1", "2", "3", "4", "5", "6"],
+            "correct": 5
         },
         {
-            "id": 6,
             "image": "IQtestpng/A6.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "options": ["1", "2", "3", "4", "5", "6"],
+            "correct": 2
         },
         {
-            "id": 7,
             "image": "IQtestpng/A7.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "options": ["1", "2", "3", "4", "5", "6"],
+            "correct": 5
         },
         {
-            "id": 8,
-            "image": "IQtestpng/A8.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/B1.png",
+            "options": ["1", "2", "3", "4", "5", "6"],
+            "correct": 1
         },
         {
-            "id": 9,
-            "image": "IQtestpng/A9.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/B2.png",
+            "options": ["1", "2", "3", "4", "5", "6"],
+            "correct": 5
         },
         {
-            "id": 10,
-            "image": "IQtestpng/A10.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/B3.png",
+            "options": ["1", "2", "3", "4", "5", "6"],
+            "correct": 0
         },
         {
-            "id": 11,
-            "image": "IQtestpng/A11.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/B4.png",
+            "options": ["1", "2", "3", "4", "5", "6"],
+            "correct": 1
         },
         {
-            "id": 12,
-            "image": "IQtestpng/A12.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/B5.png",
+            "options": ["1", "2", "3", "4", "5", "6"],
+            "correct": 0
         },
         {
-            "id": 13,
-            "image": "IQtestpng/A13.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/B6.png",
+            "options": ["1", "2", "3", "4", "5", "6"],
+            "correct": 2
         },
         {
-            "id": 14,
-            "image": "IQtestpng/A14.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/B7.png",
+            "options": ["1", "2", "3", "4", "5", "6"],
+            "correct": 4
         },
         {
-            "id": 15,
-            "image": "IQtestpng/A15.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/C1.png",
+            "options": ["1", "2", "3", "4", "5", "6", "7", "8"],
+            "correct": 7
         },
         {
-            "id": 16,
-            "image": "IQtestpng/A16.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/C2.png",
+            "options": ["1", "2", "3", "4", "5", "6", "7", "8"],
+            "correct": 1
         },
         {
-            "id": 17,
-            "image": "IQtestpng/A17.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/C3.png",
+            "options": ["1", "2", "3", "4", "5", "6", "7", "8"],
+            "correct": 2
         },
         {
-            "id": 18,
-            "image": "IQtestpng/A18.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/C4.png",
+            "options": ["1", "2", "3", "4", "5", "6", "7", "8"],
+            "correct": 7
         },
         {
-            "id": 19,
-            "image": "IQtestpng/A19.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/C5.png",
+            "options": ["1", "2", "3", "4", "5", "6", "7", "8"],
+            "correct": 6
         },
         {
-            "id": 20,
-            "image": "IQtestpng/A20.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/C6.png",
+            "options": ["1", "2", "3", "4", "5", "6", "7", "8"],
+            "correct": 3
         },
         {
-            "id": 21,
-            "image": "IQtestpng/A21.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/C7.png",
+            "options": ["1", "2", "3", "4", "5", "6", "7", "8"],
+            "correct": 4
         },
         {
-            "id": 22,
-            "image": "IQtestpng/A22.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/D1.png",
+            "options": ["1", "2", "3", "4", "5", "6", "7", "8"],
+            "correct": 2
         },
         {
-            "id": 23,
-            "image": "IQtestpng/A23.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/D2.png",
+            "options": ["1", "2", "3", "4", "5", "6", "7", "8"],
+            "correct": 3
         },
         {
-            "id": 24,
-            "image": "IQtestpng/A24.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/D3.png",
+            "options": ["1", "2", "3", "4", "5", "6", "7", "8"],
+            "correct": 2
         },
         {
-            "id": 25,
-            "image": "IQtestpng/A25.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/D4.png",
+            "options": ["1", "2", "3", "4", "5", "6", "7", "8"],
+            "correct": 6
         },
         {
-            "id": 26,
-            "image": "IQtestpng/A26.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/D5.png",
+            "options": ["1", "2", "3", "4", "5", "6", "7", "8"],
+            "correct": 7
         },
         {
-            "id": 27,
-            "image": "IQtestpng/A27.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/D6.png",
+            "options": ["1", "2", "3", "4", "5", "6", "7", "8"],
+            "correct": 5
         },
         {
-            "id": 28,
-            "image": "IQtestpng/A28.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/D7.png",
+            "options": ["1", "2", "3", "4", "5", "6", "7", "8"],
+            "correct": 4
         },
         {
-            "id": 29,
-            "image": "IQtestpng/A29.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/E1.png",
+            "options": ["1", "2", "3", "4", "5", "6", "7", "8"],
+            "correct": 6
         },
         {
-            "id": 30,
-            "image": "IQtestpng/A30.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/E2.png",
+            "options": ["1", "2", "3", "4", "5", "6", "7", "8"],
+            "correct": 5
         },
         {
-            "id": 31,
-            "image": "IQtestpng/A31.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/E3.png",
+            "options": ["1", "2", "3", "4", "5", "6", "7", "8"],
+            "correct": 7
         },
         {
-            "id": 32,
-            "image": "IQtestpng/A32.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/E4.png",
+            "options": ["1", "2", "3", "4", "5", "6", "7", "8"],
+            "correct": 1
         },
         {
-            "id": 33,
-            "image": "IQtestpng/A33.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/E5.png",
+            "options": ["1", "2", "3", "4", "5", "6", "7", "8"],
+            "correct": 0
         },
         {
-            "id": 34,
-            "image": "IQtestpng/A34.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/E6.png",
+            "options": ["1", "2", "3", "4", "5", "6", "7", "8"],
+            "correct": 4
         },
         {
-            "id": 35,
-            "image": "IQtestpng/A35.png",
-            "options": ["1", "2", "3", "4", "5", "6"]
+            "image": "IQtestpng/E7.png",
+            "options": ["1", "2", "3", "4", "5", "6", "7", "8"],
+            "correct": 0
         }
     ]
 }
