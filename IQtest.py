@@ -1,9 +1,9 @@
-import tkinter as tk
-from tkinter import ttk, messagebox
-from PIL import Image, ImageTk
-import os
 import json
-import time
+import os
+import tkinter as tk
+from tkinter import messagebox
+
+from PIL import Image, ImageTk
 
 
 class IQTestApp:
