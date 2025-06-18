@@ -46,7 +46,7 @@ class IQTestApp:
                     self.questions = data.get("questions", [])
                     print(f"Загружено вопросов: {len(self.questions)}")
             else:
-                print("Файл вопросов не найден")
+                print("")
                 self.questions = []
         except Exception as e:
             print(f"Ошибка загрузки вопросов: {e}")
